@@ -1,0 +1,27 @@
+/* Global styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Oceanographic-specific styles */
+.ocean-blue {
+  color: #0077be;
+}
+
+.ocean-green {
+  color: #2e8b57;
+}
+
+.ocean-lavender {
+  color: #967bb6;
+}
+
+/* Custom Ant Design theme overrides can be added here */

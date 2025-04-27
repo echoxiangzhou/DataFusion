@@ -1,0 +1,74 @@
+.app-layout {
+  min-height: 100vh;
+}
+
+.app-header {
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+}
+
+.app-logo {
+  height: 40px;
+  margin-right: 20px;
+}
+
+.app-title {
+  color: #0077be;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.app-sidebar {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  overflow: auto;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 64px;
+}
+
+.app-content {
+  margin-top: 64px;
+  padding: 24px;
+  background: #f0f2f5;
+  min-height: calc(100vh - 64px);
+}
+
+.dashboard-card {
+  margin-bottom: 24px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.data-table {
+  background: #fff;
+  padding: 24px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+
+.visualization-container {
+  background: #fff;
+  padding: 24px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  margin-bottom: 24px;
+}
+
+.form-container {
+  background: #fff;
+  padding: 24px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  max-width: 800px;
+  margin: 0 auto;
+}
