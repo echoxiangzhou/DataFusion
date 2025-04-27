@@ -1,1 +1,59 @@
-<file_content_placeholder>
+version: '3.8'
+
+services:
+  postgres:
+    image: postgis/postgis:15-3.3
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: marine_data
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    command: ["postgres", "-c", "shared_preload_libraries=timescaledb"]
+    
+  thredds:
+    image: unidata/thredds-docker:5.4
+    ports:
+      - "8080:8080"
+    volumes:
+      - thredds_data:/usr/local/tomcat/content/thredds
+      - ./thredds/catalog.xml:/usr/local/tomcat/content/thredds/catalog.xml
+    
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
+      - thredds
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://postgres:postgres@postgres:5432/marine_data
+      - REDIS_URL=redis://redis:6379/0
+      - THREDDS_URL=http://thredds:8080/thredds
+      
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  thredds_data:
